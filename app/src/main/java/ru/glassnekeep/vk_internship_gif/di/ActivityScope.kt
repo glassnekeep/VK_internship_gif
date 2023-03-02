@@ -3,4 +3,4 @@ package ru.glassnekeep.vk_internship_gif.di
 import javax.inject.Scope
 
 @Scope
-annotation class ApplicationScope
+annotation class ActivityScope

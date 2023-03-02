@@ -1,4 +1,4 @@
-package ru.glassnekeep.vk_internship_gif.presentation.gif_list_screen
+package ru.glassnekeep.vk_internship_gif.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -6,7 +6,7 @@ import java.lang.IllegalArgumentException
 import javax.inject.Inject
 import javax.inject.Provider
 
-class GifListViewModelFactory @Inject constructor(
+class ViewModelFactory @Inject constructor(
     private val creators: @JvmSuppressWildcards Map<Class<out ViewModel>, Provider<ViewModel>>
 ): ViewModelProvider.Factory {
     override fun <T: ViewModel> create(modelClass: Class<T>): T {
