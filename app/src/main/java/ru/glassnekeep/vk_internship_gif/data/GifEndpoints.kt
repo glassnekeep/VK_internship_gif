@@ -8,6 +8,6 @@ import retrofit2.http.Query
 interface GifEndpoints {
     @GET("search")
     suspend fun getSearchedGifList(@Query("api_key") apiKey: String, @Query("q") search: String, @Query("lang") language: String = "ru") : Response<GifListResponse>
-    @GET("gif_id")
-    suspend fun getGifWithId(@Path("gif_id") gifId: String, @Path("api_key") apiKey: String) : Response<GifResponse>
+    @GET("{gif_id}")
+    suspend fun getGifWithId(@Path("gif_id") gifId: String, @Query("api_key") apiKey: String) : Response<GifResponse>
 }

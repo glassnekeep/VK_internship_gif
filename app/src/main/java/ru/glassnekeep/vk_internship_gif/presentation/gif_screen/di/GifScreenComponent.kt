@@ -3,7 +3,7 @@ package ru.glassnekeep.vk_internship_gif.presentation.gif_screen.di
 import dagger.Subcomponent
 import ru.glassnekeep.vk_internship_gif.presentation.gif_screen.GifFragment
 
-@Subcomponent
+@Subcomponent(modules = [GifScreenModule::class])
 interface GifScreenComponent {
     @Subcomponent.Factory
     interface Factory {

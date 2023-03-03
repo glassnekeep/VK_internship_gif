@@ -36,7 +36,7 @@ class GifListFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val gifListComponent: GifListScreenComponent by lazy {
-        initGifListComponent()
+        initGifListScreenComponent()
     }
 
     private val viewModel by viewModels<GifListViewModel> { viewModelFactory }
@@ -65,7 +65,12 @@ class GifListFragment : Fragment() {
         setSearchTextListener()
     }
 
-    private fun initGifListComponent(): GifListScreenComponent {
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun initGifListScreenComponent(): GifListScreenComponent {
         return (requireActivity() as MainActivity).mainActivityComponent.createGifListScreenComponent().create(requireContext()) { gif -> gifClickListener(gif) }
     }
 
@@ -84,6 +89,7 @@ class GifListFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                //TODO Подумать, как лучше вызывать этот snackbar
                 if (newText.isNullOrBlank()) Snackbar.make(binding.root, getString(R.string.enter_not_empty_search_phrase), Snackbar.LENGTH_SHORT).show()
                 return true
             }

@@ -6,7 +6,6 @@ object GifToDTOMapper {
             gifDTO.id,
             gifDTO.title,
             gifDTO.images.original.url,
-            gifDTO.images.preview?.url,
             gifDTO.rating
         )
     }

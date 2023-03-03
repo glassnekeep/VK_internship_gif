@@ -23,7 +23,7 @@ class GifRemoteDataSource @Inject constructor(
     }
 
     suspend fun getGifWithId(id: String): GifDTO {
-        val response = gifEndpoints.getGifWithId(apiKey, id)
+        val response = gifEndpoints.getGifWithId(id, apiKey)
         with(response) {
             if (isSuccessful) {
                 return body()?.gif ?: throw ErrorHolder.BadRequest("Ошибка получения данных")
