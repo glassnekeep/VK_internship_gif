@@ -1,11 +1,13 @@
 package ru.glassnekeep.vk_internship_gif.di
 
+import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.glassnekeep.vk_internship_gif.data.GifEndpoints
 
+@Module
 object NetworkModule {
 
     private const val BASE_URL = "https://api.giphy.com/v1/gifs/"

@@ -22,7 +22,7 @@ data class GifDTO(
 
 data class Images(
     val original: Original,
-    @SerializedName("preview_gif") val preview: PreviewGif
+    @SerializedName("preview_gif") val preview: PreviewGif? = null
 )
 
 data class Original(
