@@ -2,12 +2,12 @@ package ru.glassnekeep.vk_internship_gif.presentation.gif_list_screen
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -56,12 +56,13 @@ class GifListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val recycler = binding.gifRecycler.apply {
+        binding.gifRecycler.apply {
             layoutManager = LinearLayoutManager(requireContext())
             itemAnimator = DefaultItemAnimator()
             adapter = gifAdapter
         }
         setGifListObserver(viewModel)
+        setMessageObserver(viewModel)
         setSearchTextListener()
     }
 
@@ -89,8 +90,6 @@ class GifListFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                //TODO Подумать, как лучше вызывать этот snackbar
-                if (newText.isNullOrBlank()) Snackbar.make(binding.root, getString(R.string.enter_not_empty_search_phrase), Snackbar.LENGTH_SHORT).show()
                 return true
             }
         })
@@ -111,6 +110,12 @@ class GifListFragment : Fragment() {
             val differences = DiffUtil.calculateDiff(diffUtilCallback)
             gifAdapter.gifList = list
             differences.dispatchUpdatesTo(gifAdapter)
+        }
+    }
+
+    private fun setMessageObserver(viewModel: GifListViewModel) {
+        viewModel.message.observe(viewLifecycleOwner) { message ->
+            Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
         }
     }
 }

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">VK_internship_gif</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="enter_not_empty_search_phrase">Введите непустой поисковый запрос</string>
     <string name="default_title">The gif does not have a title</string>
+    <string name="enter_search_query">Введите непустой запрос</string>
 </resources>

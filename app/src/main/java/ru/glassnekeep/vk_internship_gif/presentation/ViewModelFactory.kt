@@ -2,7 +2,6 @@ package ru.glassnekeep.vk_internship_gif.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import java.lang.IllegalArgumentException
 import javax.inject.Inject
 import javax.inject.Provider
 

@@ -12,11 +12,11 @@ import javax.inject.Inject
 
 class GifViewModel @Inject constructor(private val gifRepository: GifRepository): ViewModel() {
 
-    private var _message = MutableLiveData<String>()
+    private val _message = MutableLiveData<String>()
 
     val message: LiveData<String> get() = _message
 
-    private var _gif = MutableLiveData<Gif>()
+    private val _gif = MutableLiveData<Gif>()
 
     val gif: LiveData<Gif> get() = _gif
 
