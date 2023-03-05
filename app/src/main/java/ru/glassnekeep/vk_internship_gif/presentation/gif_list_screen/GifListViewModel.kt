@@ -13,9 +13,9 @@ import javax.inject.Inject
 
 class GifListViewModel @Inject constructor(private val gifRepository: GifRepository): ViewModel() {
 
-    private val _message = MutableLiveData<String>()
+    private val _message = MutableLiveData<String?>()
 
-    val message: LiveData<String> get() = _message
+    val message: LiveData<String?> get() = _message
 
     private val _gifList = MutableLiveData<List<Gif>>()
 
@@ -23,17 +23,13 @@ class GifListViewModel @Inject constructor(private val gifRepository: GifReposit
 
     private var getListJob: Job? = null
 
-    init {
-        getGifList("")
-    }
-
     fun getGifList(searchString: String) {
         getListJob?.cancel()
         getListJob = viewModelScope.launch {
             try {
                 val list = gifRepository.getSearchedGifList(searchString)
                 _gifList.value = list
-                if (list.isEmpty()) _message.value = "Введите корректный запрос"
+                if (list.isEmpty()) _message.value = "Введите корректный запрос" else _message.value = null
                 _gifList.postValue(gifRepository.getSearchedGifList(searchString))
             } catch (exception: ErrorHolder) {
                 _message.postValue(exception.message)

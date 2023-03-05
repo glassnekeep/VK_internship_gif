@@ -115,7 +115,7 @@ class GifListFragment : Fragment() {
 
     private fun setMessageObserver(viewModel: GifListViewModel) {
         viewModel.message.observe(viewLifecycleOwner) { message ->
-            Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+            if (message != null) Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
         }
     }
 }
